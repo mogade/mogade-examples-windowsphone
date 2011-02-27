@@ -1,0 +1,28 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Mogade.Examples.WindowsPhone.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+   <StackPanel x:Name="LayoutRoot" Background="Transparent">
+      <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+         <TextBlock x:Name="ApplicationTitle" Text="mogade.com example" Style="{StaticResource PhoneTextNormalStyle}"/>
+         <Grid x:Name="Info" Grid.Row="1" Margin="0,0,0,0">
+            <TextBlock x:Name="Level" Height="30" VerticalAlignment="bottom"  HorizontalAlignment="left" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="Score" Height="30" VerticalAlignment="bottom"  HorizontalAlignment="right" Style="{StaticResource PhoneTextNormalStyle}"/>
+         </Grid>
+      </StackPanel>      
+      <Grid x:Name="Board" Grid.Row="1" Margin="12,0,12,0" Height="516" Width="443"></Grid>
+      <TextBlock x:Name="HelpText" Height="30" VerticalAlignment="bottom"  HorizontalAlignment="center" Text="Press the buttons when they turn green" Style="{StaticResource PhoneTextNormalStyle}"/>
+   </StackPanel> 
+</phone:PhoneApplicationPage>
