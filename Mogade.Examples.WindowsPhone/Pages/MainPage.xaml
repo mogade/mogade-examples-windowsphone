@@ -29,6 +29,7 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
          <Button Content="Play Now!" Height="72" HorizontalAlignment="Left" Margin="83,47,0,0" Name="PlayButton" VerticalAlignment="Top" Width="263" Click="PlayButton_Click" />
+         <Button Content="Leaderboard" Height="72" HorizontalAlignment="Left" Margin="83,150,0,0" Name="Leaderboard" VerticalAlignment="Top" Width="263" Click="Leaderboard_Click" />
       </Grid>
     </Grid>
 </phone:PhoneApplicationPage>

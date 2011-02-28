@@ -1,13 +1,17 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Mogade.WindowsPhone;
 
 namespace Mogade.Examples.WindowsPhone
 {
    public partial class App
    {
+      public IMogadeClient Mogade { get; private set; }
+
       public App()
       {
          UnhandledException += Application_UnhandledException;
@@ -15,12 +19,21 @@ namespace Mogade.Examples.WindowsPhone
          {
             Current.Host.Settings.EnableFrameRateCounter = true;
          }         
-         InitializeComponent();         
+         InitializeComponent();
          InitializePhoneApplication();
       }
-      public PhoneApplicationFrame RootFrame { get; private set; }      
-      private void Application_Launching(object sender, LaunchingEventArgs e){}
-      private void Application_Activated(object sender, ActivatedEventArgs e){}      
+      public PhoneApplicationFrame RootFrame { get; private set; }
+      private void Application_Launching(object sender, LaunchingEventArgs e)
+      {
+         Mogade = MogadeHelper.CreateInstance();
+         Mogade.LogApplicationStart();
+
+      }
+      private void Application_Activated(object sender, ActivatedEventArgs e)
+      {
+         Mogade = MogadeHelper.CreateInstance();
+         Mogade.LogApplicationStart();
+      }
       private void Application_Deactivated(object sender, DeactivatedEventArgs e){}
       private void Application_Closing(object sender, ClosingEventArgs e){}
 
@@ -33,7 +46,10 @@ namespace Mogade.Examples.WindowsPhone
          }
          else
          {
-            MogadeProvider.GetInstance.LogError("nagivation failed", e.Uri.ToString());
+            //we normally don't swallow exceptions, but doing so in a global error handler isn't uncommon
+            try { Mogade.LogError("nagivation failed", e.Uri.ToString()); }
+            catch (Exception) { }
+            
          }
       }
       private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
@@ -44,7 +60,9 @@ namespace Mogade.Examples.WindowsPhone
          }
          else
          {
-            MogadeProvider.GetInstance.LogError("unhandled exception", e.ExceptionObject.Message);
+            //we normally don't swallow exceptions, but doing so in a global error handler isn't uncommon
+            try { Mogade.LogError("nagivation failed", e.ExceptionObject.Message); }
+            catch (Exception) { }
          }
       }
       

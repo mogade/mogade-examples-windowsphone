@@ -20,7 +20,7 @@ namespace Mogade.Examples.WindowsPhone.Pages
       {
          _level = Convert.ToInt32(NavigationContext.QueryString["level"]);
          _score = Convert.ToInt32(NavigationContext.QueryString["score"]);
-         PageTitle.Text = _level == 10 ? "You Win!" : "Game Over";         
+         PageTitle.Text = _level == 10 ? "You Win!" : "Game Over";
          base.OnNavigatedTo(e);
       }
 
@@ -32,7 +32,7 @@ namespace Mogade.Examples.WindowsPhone.Pages
          }
       }
 
-      private void Submit_Click(object sender, System.Windows.RoutedEventArgs e)
+      private void Submit_Click(object sender, RoutedEventArgs e)
       {
          if (string.IsNullOrEmpty(UserName.Text))
          {
@@ -40,7 +40,11 @@ namespace Mogade.Examples.WindowsPhone.Pages
          }
          Submit.IsEnabled = false;
          Submit.Content = "Sending...";
-         MogadeProvider.GetInstance.SaveScore("4d6a4c32bc7a05710a000012", new Score{Data = _level.ToString(), Points = _score, UserName = UserName.Text}, ScoreResponseHandler);
+
+         //we can store a bit of arbitrary data in the Data field which we can then use in our leaderboard
+         //you can always not set the Data if you have no extra information you want to store with the score
+         var score = new Score {Data = _level.ToString(), Points = _score, UserName = UserName.Text};
+         Mogade.SaveScore(MogadeHelper.LeaderboardId(Leaderboards.Main), score, ScoreResponseHandler);
       }
 
       private void ScoreResponseHandler(Response<Ranks> r)

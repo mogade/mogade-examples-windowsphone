@@ -15,5 +15,10 @@ namespace Mogade.Examples.WindowsPhone
       {
          NavigationService.Navigate(new Uri("/Pages/GamePage.xaml", UriKind.Relative));
       }
+
+      private void Leaderboard_Click(object sender, RoutedEventArgs e)
+      {
+         NavigationService.Navigate(new Uri("/Pages/LeaderboardPage.xaml", UriKind.Relative));
+      }
    }
 }
