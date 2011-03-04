@@ -55,7 +55,6 @@ namespace Mogade.Examples.WindowsPhone.Pages
          }
          else
          {
-            
             var text = string.Format("Daily Rank: {0}\rOverall Rank: {1}", r.Data.Daily, r.Data.Overall);
             if (r.Data.TopScore)
             {

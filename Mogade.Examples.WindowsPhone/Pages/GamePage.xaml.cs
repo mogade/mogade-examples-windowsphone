@@ -13,6 +13,7 @@ namespace Mogade.Examples.WindowsPhone
 
       private int _level;
       private int _score;
+      private bool _ended;
       private Random _random;
       public GamePage()
       {
@@ -22,6 +23,7 @@ namespace Mogade.Examples.WindowsPhone
       protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
       {
          _random = new Random();
+         _ended = false;
          StartLevel(1);
          SetScore(0);
          base.OnNavigatedTo(e);
@@ -55,12 +57,16 @@ namespace Mogade.Examples.WindowsPhone
 
       public void ButtonTimedOut(Trigger trigger)
       {
-         GotoEndGame();
+         EndGate();
       }
 
-      private void GotoEndGame()
+      private void EndGate()
       {
-         NavigationService.Navigate(new Uri(string.Format("/Pages/GameOver.xaml?score={0}&level={1}", _score, _level), UriKind.Relative));
+         if (!_ended)
+         {
+            _ended = true;
+            NavigationService.Navigate(new Uri(string.Format("/Pages/GameOver.xaml?score={0}&level={1}", _score, _level), UriKind.Relative));
+         }
       }
 
       public void Triggered(TimeSpan? timeSpan, Trigger trigger)
@@ -81,7 +87,7 @@ namespace Mogade.Examples.WindowsPhone
          if (_level == 9)
          {
             _level = 10;
-            GotoEndGame();
+            EndGate();
          }
          StartLevel(_level + 1);
       }

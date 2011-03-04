@@ -12,32 +12,33 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+   <Grid x:Name="LayoutRoot" Background="Transparent">
+      <Grid.RowDefinitions>
+         <RowDefinition Height="Auto"/>
+         <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="mogade.com" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="Scope" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+      <!--TitlePanel contains the name of the application and page title-->
+      <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+         <TextBlock x:Name="ApplicationTitle" Text="mogade.com" Style="{StaticResource PhoneTextNormalStyle}"/>
+         <TextBlock x:Name="Scope" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+      </StackPanel>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
-    </Grid>
- 
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+      <!--ContentPanel - place additional content here-->
+      <Grid x:Name="Navigtion" Grid.Row="1" Margin="12,0,12,631">
+         <TextBlock Height="54" TextAlignment="Center" FontSize="38" HorizontalAlignment="Left" Margin="6,6,0,0" Name="ScopeTitle" VerticalAlignment="Top" Width="444" />
+         <Button BorderThickness="3" Content="«" FontFamily="Segoe WP" FontStretch="Normal" Height="60" HorizontalAlignment="Left" Name="PreviousScope" Padding="0,-5,0,0" VerticalAlignment="Top" Width="67" Click="PreviousScope_Click" />
+         <Button BorderThickness="3" Content="»" FontFamily="Segoe WP" FontStretch="Normal" Height="60" HorizontalAlignment="Left" Name="NextScope" Padding="0,-5,0,0" VerticalAlignment="Top" Width="67" Margin="383,0,0,0" Click="NextScope_Click" />
+      </Grid>
 
+      <Grid x:Name="Leaderboard" Grid.Row="1" Margin="24,71,12,87">
+         <TextBlock Height="54" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" Margin="6,6,0,0" Name="TitleUserName" Text="UserName" VerticalAlignment="Top" Width="444" />
+         <TextBlock Height="54" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" Margin="200,6,0,0" Name="TitleScore" Text="Score" VerticalAlignment="Top" Width="444" />
+         <TextBlock Height="54" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" Margin="350,6,0,0" Name="TitleLevel" Text="Level" VerticalAlignment="Top" Width="444" />
+         <StackPanel Name="Scores" Margin="6, 50, 0, 0" />
+      </Grid>
+      <Grid x:Name="Footer" Margin="24,624,12,12" Grid.Row="1">
+         <Button Content="Home" Height="72" HorizontalAlignment="Left" Margin="284,0,0,0" Name="Home" VerticalAlignment="Top" Width="160" Click="Home_Click" />
+      </Grid>
+   </Grid>
 </Pages:BasePage>
