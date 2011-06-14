@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using Mogade.Leaderboards;
 
 namespace Mogade.Examples.WindowsPhone.Pages
 {
@@ -47,7 +46,7 @@ namespace Mogade.Examples.WindowsPhone.Pages
 
       private void LoadLeaderboard()
       {
-         ScopeTitle.Text = _scope.ToString();         
+         ScopeTitle.Text = _scope.ToString();
          //we can avoid the cross-thread issue by dispatching the entire callback, but don't do too much!
          Mogade.GetLeaderboard(MogadeHelper.LeaderboardId(Leaderboards.Main), _scope, _page, r => Dispatcher.BeginInvoke(() => LeaderboardReceived(r)));
          //could put a loading message here
@@ -71,7 +70,7 @@ namespace Mogade.Examples.WindowsPhone.Pages
          }
       }
 
-      private void Home_Click(object sender, System.Windows.RoutedEventArgs e)
+      private void Home_Click(object sender, RoutedEventArgs e)
       {
          NavigationService.Navigate(new Uri("/Pages/MainPage.xaml", UriKind.Relative));
       }

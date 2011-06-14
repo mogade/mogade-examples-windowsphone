@@ -1,6 +1,5 @@
 using System.Windows;
 using System.Windows.Controls;
-using Mogade.Leaderboards;
 
 namespace Mogade.Examples.WindowsPhone
 {

@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Mogade.Leaderboards;
 
 namespace Mogade.Examples.WindowsPhone.Pages
 {
@@ -47,7 +46,7 @@ namespace Mogade.Examples.WindowsPhone.Pages
          Mogade.SaveScore(MogadeHelper.LeaderboardId(Leaderboards.Main), score, ScoreResponseHandler);
       }
 
-      private void ScoreResponseHandler(Response<Ranks> r)
+      private void ScoreResponseHandler(Response<SavedScore> r)
       {
          if (!r.Success)
          {
@@ -55,10 +54,14 @@ namespace Mogade.Examples.WindowsPhone.Pages
          }
          else
          {
-            var text = string.Format("Daily Rank: {0}\rOverall Rank: {1}", r.Data.Daily, r.Data.Overall);
-            if (r.Data.TopScore)
+            var text = string.Format("Daily Rank: {0}\rOverall Rank: {1}", r.Data.Ranks.Daily, r.Data.Ranks.Overall);
+            if (r.Data.Highs.Overall)
             {
-               text = "Wow, that was a personal best!\r" + text;
+               text = "Wow, that was an all-time personal best!\r" + text;
+            }
+            if (r.Data.Highs.Daily)
+            {
+               text += "Your best score today!\r" + text;
             }
             
             //we are in a separate thread, we can't just update controls from the main thread.

@@ -38,7 +38,7 @@ namespace Mogade.Examples.WindowsPhone
          if (_goodAsOf != null)
          {
             _board.ButtonTimedOut(this);
-            _timer.Stop();            
+            _timer.Stop();
          }
          _goodAsOf = DateTime.Now;
          Background = new SolidColorBrush(_goodColor);

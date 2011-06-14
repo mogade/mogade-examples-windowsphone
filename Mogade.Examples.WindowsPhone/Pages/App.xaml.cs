@@ -18,7 +18,7 @@ namespace Mogade.Examples.WindowsPhone
          if (Debugger.IsAttached)
          {
             Current.Host.Settings.EnableFrameRateCounter = true;
-         }         
+         }
          InitializeComponent();
          InitializePhoneApplication();
       }
@@ -61,7 +61,7 @@ namespace Mogade.Examples.WindowsPhone
          else
          {
             //we normally don't swallow exceptions, but doing so in a global error handler isn't uncommon
-            try { Mogade.LogError("nagivation failed", e.ExceptionObject.Message); }
+            try { Mogade.LogError("unhandled exception", e.ExceptionObject.Message); }
             catch (Exception) { }
          }
       }
